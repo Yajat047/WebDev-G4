@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Order Processing System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .cart-display {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .cart-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .cart-item {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(0,123,255,0.3);
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .results {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .result-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .result-section h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .result-section pre {
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 13px;
+            border: 1px solid #dee2e6;
+            color: #495057;
+        }
+        
+        #orderConfirmation {
+            margin-top: 20px;
+        }
+        
+        .icon {
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-items {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛒 E-Commerce Order System</h1>
+            <p>Complete order processing from cart to confirmation</p>
+        </div>
+        
+        <div class="content">
+            <div class="cart-display">
+                <h3>🛍️ Your Shopping Cart</h3>
+                <div class="cart-items">
+                    <div class="cart-item">👟 Shoes</div>
+                    <div class="cart-item">👕 Shirts</div>
+                    <div class="cart-item">👜 Wallets</div>
+                </div>
+                <p style="margin-top: 15px; color: #666;">3 items • $3,000 total</p>
+            </div>
+            
+            <div class="controls">
+                <button class="btn" onclick="displayOrderDetails()">
+                    <span class="icon">📋</span> Get Order Details
+                </button>
+                <button class="btn" onclick="displayOrderSummary()">
+                    <span class="icon">📄</span> Generate Order Summary
+                </button>
+                <button class="btn" onclick="displayPaymentGateway()">
+                    <span class="icon">💳</span> Process Payment
+                </button>
+                <button class="btn" onclick="displayCompleteOrder()">
+                    <span class="icon">🚀</span> Complete Order Process
+                </button>
+            </div>
+            
+            <div class="results">
+                <div class="result-section">
+                    <h3><span class="icon">📋</span> Order Details</h3>
+                    <pre id="orderDetails">Click "Get Order Details" to see the cart analysis...</pre>
+                </div>
+                
+                <div class="result-section">
+                    <h3><span class="icon">📄</span> Order Summary</h3>
+                    <pre id="orderSummary">Click "Generate Order Summary" to see the order summary with ID...</pre>
+                </div>
+                
+                <div class="result-section">
+                    <h3><span class="icon">💳</span> Payment Result</h3>
+                    <pre id="paymentResult">Click "Process Payment" to see payment processing results...</pre>
+                </div>
+                
+                <div class="result-section">
+                    <h3><span class="icon">🎉</span> Complete Order Process</h3>
+                    <pre id="completeOrder">Click "Complete Order Process" to run the full workflow...</pre>
+                    <div id="orderConfirmation"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
