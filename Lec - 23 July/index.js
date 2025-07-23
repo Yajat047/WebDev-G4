@@ -37,10 +37,18 @@ function square(a) {
     return a * a;
 }
 
+function power(base, exponent) {
+    if (typeof base !== 'number' || typeof exponent !== 'number') {
+        throw new Error('Both arguments must be numbers');
+    }
+    return Math.pow(base, exponent);
+}
+
 module.exports = {
     add,
     subtract,
     multiply,
     divide,
-    square
+    square,
+    power
 };

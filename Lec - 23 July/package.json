@@ -1,12 +1,24 @@
 {
-  "name": "g4_yd",
-  "version": "1.0.2",
+  "name": "g4_yd_webdev",
+  "version": "1.1.0",
   "description": "A utility package with basic arithmetic operations for JavaScript development",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
   },
-  "keywords": ["calculator", "javascript", "add", "subtract", "multiply", "divide", "square"],
+  "keywords": [
+    "calculator",
+    "javascript",
+    "add",
+    "subtract",
+    "multiply",
+    "divide",
+    "square",
+    "power"
+  ],
   "author": "Yajat047",
   "license": "MIT",
   "repository": {
@@ -16,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/Yajat047/WebDev-G4/issues"
   },
-  "homepage": "https://github.com/Yajat047/WebDev-G4#readme"
+  "homepage": "https://github.com/Yajat047/WebDev-G4#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5"
+  }
 }

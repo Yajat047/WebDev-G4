@@ -1,9 +1,19 @@
-# Changelog
+# g4_yd
 
-## v1.0.2 - 2025-07-23
-- Added square function (a²)
+## 1.1.0
 
-## v1.0.0 - 2025-07-23
-- Initial release
-- Added basic math functions: add, subtract, multiply, divide
-- Error handling for invalid inputs and division by zero
+### Minor Changes
+
+- Add power function for calculating base raised to exponent (Math.pow wrapper)
+
+## 1.0.2
+
+### Patch Changes
+
+- Update package name to g4_yd_webdev and prepare for npm publishing
+
+## 1.0.1
+
+### Patch Changes
+
+- Initial release of g4_yd utility package with basic arithmetic operations (add, subtract, multiply, divide, square)

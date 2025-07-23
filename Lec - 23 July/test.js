@@ -1,4 +1,4 @@
-const { add, subtract, multiply, divide, square } = require('./index.js');
+const { add, subtract, multiply, divide, square, power } = require('./index.js');
 
 console.log('Testing Chainsend Math Utils Package');
 console.log('====================================');
@@ -58,5 +58,12 @@ try {
 console.log('\n7. Testing square function:');
 console.log(`square(4) = ${square(4)}`);
 console.log(`square(7) = ${square(7)}`);
+
+console.log('\n8. Testing power function:');
+console.log(`power(2, 3) = ${power(2, 3)}`);
+console.log(`power(5, 2) = ${power(5, 2)}`);
+console.log(`power(3, 0) = ${power(3, 0)}`);
+console.log(`power(2, -1) = ${power(2, -1)}`);
+console.log(`power(4, 0.5) = ${power(4, 0.5)}`);
 
 console.log('\nAll tests completed!');
