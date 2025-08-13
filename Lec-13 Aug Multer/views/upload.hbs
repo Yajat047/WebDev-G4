@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .success {
+            color: green;
+            background-color: lightgreen;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .error {
+            color: red;
+            background-color: lightcoral;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Upload</h1>
+    
+    {{#if success}}
+        <div class="success">{{success}}</div>
+    {{/if}}
+    
+    {{#if error}}
+        <div class="error">{{error}}</div>
+    {{/if}}
+    
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label>Choose image file:</label><br>
+        <input type="file" name="file" accept="image/*" required><br>
+        <button type="submit">Upload Image</button>
+    </form>
+    {{!-- <p><small>Only image files are allowed (JPG, PNG, GIF, etc.)</small></p> --}}
+    
+    {{#if fileInfo}}
+        <h3>File Details:</h3>
+        <p><strong>Original Name:</strong> {{fileInfo.originalName}}</p>
+        <p><strong>Saved As:</strong> {{fileInfo.filename}}</p>
+        <p><strong>Size:</strong> {{fileInfo.size}}</p>
+        <p><strong>Type:</strong> {{fileInfo.mimetype}}</p>
+    {{/if}}
+    
+    <br>
+    <a href="/home">Back to Home</a> | 
+    <a href="/files">View All Files</a> | 
+    <a href="/products">Products</a>
+</body>
+</html>
